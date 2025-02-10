@@ -1,0 +1,25 @@
+name: Auto Deploy 🚀
+
+on:
+  push:
+    branches:
+      - main  # Faqat `main` branch ga push bo‘lsa ishga tushadi
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repository'ni yuklash 🛠️
+        uses: actions/checkout@v3
+
+      - name: Node.js versiyasini o‘rnatish
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Bog‘liqliklarni o‘rnatish 📦
+        run: npm install
+
+      - name: Loyihani build qilish 🔧
+        run: npm run build
